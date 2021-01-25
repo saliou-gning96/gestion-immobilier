@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Client index
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Liste des locations
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('client_index') }}">Client</a></li>
+        <li><a href="{{path('client_show', {id: client.id})}}">Détail</a></li>
+        <li class="active">Liste des locations</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Liste des locations du client
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="{{path('client_location_new',{id: client.id})}}" class="btn btn-primary waves-effect waves-light">
+                  Ajouter une location <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>
+                  Id
+                </th>
+                <th>
+                  Date début
+                </th>
+                <th>
+                  Date fin
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for location in locations %}
+                <tr>
+                  <td>
+                    {{ location.id }}
+                  </td>
+                  <td>
+                    {{ location.dateDebut|date('m/d/Y') }}
+                  </td>
+                  <td>
+                    {{ location.dateFin|date('m/d/Y') }}
+                  </td>
+                </tr>
+              {% else %}
+                <tr>
+                  <td colspan="100%">
+                    no records found
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

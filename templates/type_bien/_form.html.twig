@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                {{ form_label(form.libelle, 'Nom du type de bien') }}
+                {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button class="btn btn-primary btn-block waves-effect waves-light">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

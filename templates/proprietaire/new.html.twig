@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Proprietaire{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Créer
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('proprietaire_index') }}">Proprietaires</a></li>
+        <li class="active">Créer</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Formulaire de création du proprietaire
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="{{ path('proprietaire_index') }}"
+                  class="btn btn-primary waves-effect waves-light">
+                  Voir la liste
+                </a>
+              </div>
+            </div>
+        </div>
+        {{ include('proprietaire/_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}

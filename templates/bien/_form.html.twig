@@ -1,0 +1,37 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_label(form.libelle, 'Nom du bien') }}
+                {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_label(form.adresse, 'Adresse du bien') }}
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+         <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_label(form.centre_fiscal, 'Centre iscal du bien') }}
+                {{ form_widget(form.centre_fiscal, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_label(form.proprietaire, 'Propriétaire') }}
+                {{ form_widget(form.proprietaire, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                {{ form_label(form.type_bien, 'Type du bien') }}
+                {{ form_widget(form.type_bien, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button class="btn btn-primary btn-block waves-effect waves-light">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

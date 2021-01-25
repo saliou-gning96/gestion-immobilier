@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Bien{% endblock %}
+
+{% block content %}
+    
+
+
+    <!-- Page-Title -->
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Ajouter un article
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('bien_index') }}">Biens</a></li>
+        <li><a href="{{ path('bien_show', {'id': bien.id}) }}">Détail</a></li>
+        <li class="active">Ajouter un article</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Formulaire d'un article pour un bien {{ bien.libelle }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="{{ path('bien_article', {'id': bien.id}) }}"
+                  class="btn btn-primary waves-effect waves-light">
+                  Voir la liste
+                </a>
+              </div>
+            </div>
+        </div>
+        {{ include('bien/_form_article.html.twig') }}
+    </div>
+</div>
+{% endblock %}

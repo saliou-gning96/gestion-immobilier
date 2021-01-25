@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles d'un bien{% endblock %}
+
+{% block content %}
+    
+
+
+    <!-- Page-Title -->
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Liste des articles du bien
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('bien_index') }}">Biens</a></li>
+        <li><a href="{{ path('bien_show', {'id': bien.id}) }}">Détail</a></li>
+        <li class="active">Liste des articles</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Formulaire d'un article pour un bien {{ bien.libelle }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="{{ path('bien_new_article', {'id': bien.id}) }}"
+                  class="btn btn-primary waves-effect waves-light">
+                  Ajouter un bien <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>
+                Id
+              </th>
+              <th>
+                Libelle
+              </th>
+              <th>
+                Quantité
+              </th>
+              <th>
+                Position
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for article in articles %}
+              <tr>
+                <td>
+                  {{ article.id }}
+                </td>
+                <td>
+                  {{ article.libelle }}
+                </td>
+                <td>
+                  {{ article.quantite }}
+                </td>
+                <td>
+                  {{ article.position }}
+                </td>
+              </tr>
+            {% else %}
+              <tr>
+                <td colspan="100%">
+                  no records found
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

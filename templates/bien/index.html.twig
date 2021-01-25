@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Bien index
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Biens
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li class="active">Biens</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Liste des biens
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="{{ path('bien_new') }}"
+                  class="btn btn-primary waves-effect waves-light">
+                  Créer <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>
+                  Id
+                </th>
+                <th>
+                  Libelle
+                </th>
+                <th>
+                  Adresse
+                </th>
+                <th>
+                  Centre_fiscal
+                </th>
+                <th>
+                  actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for bien in biens %}
+                <tr>
+                  <td>
+                    {{ bien.id }}
+                  </td>
+                  <td>
+                    {{ bien.libelle }}
+                  </td>
+                  <td>
+                    {{ bien.adresse }}
+                  </td>
+                  <td>
+                    {{ bien.centreFiscal }}
+                  </td>
+                  <td>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <a class="btn btn-success waves-effect waves-light btn-block"
+                          href="{{
+                          path(
+                            'bien_show',
+                            {
+                              id: bien.id
+                            }
+                          )
+                          }}">
+                          Voir
+                        </a>
+                      </div>
+                      <div class="col-sm-6">
+                        <a class="btn btn-info waves-effect waves-light btn-block"
+                          href="{{
+                          path(
+                            'bien_edit',
+                            {
+                              id: bien.id
+                            }
+                          )
+                          }}">
+                          Modifier
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              {% else %}
+                <tr>
+                  <td colspan="5">
+                    no records found
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

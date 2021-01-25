@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proprietaire{% endblock %}
+
+{% block content %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+        <h4 class="pull-left page-title">
+            Détail
+        </h4>
+        <ol class="breadcrumb pull-right">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="{{ path('proprietaire_index') }}">Proprietaire</a></li>
+            <li class="active">Détail</li>
+        </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="panel panel-border panel-primary">
+            <div class="panel-heading">
+            <h3 class="panel-title">
+                Détail du Proprietaire
+            </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <div class="m-b-30 pull-right">
+                            <a href="{{ path('proprietaire_index') }}"
+                            class="btn btn-primary waves-effect waves-light">
+                            Voir la liste
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ proprietaire.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <td>{{ proprietaire.user.prenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ proprietaire.user.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ proprietaire.user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre de biens</th>
+                                    <td>{{ proprietaire.biens|length }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a class="btn btn-primary btn-block waves-effect waves-light" href="{{ path('proprietaire_edit', {'id': proprietaire.id}) }}">Modifier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('proprietaire/_delete_form.html.twig') }}
+{% endblock %}

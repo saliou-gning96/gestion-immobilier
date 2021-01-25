@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Bien index
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Locations
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li class="active">Locations</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Liste des location en cours
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="" class="btn btn-primary waves-effect waves-light">
+                  Créer <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>
+                  Id
+                </th>
+                <th>
+                  Date début
+                </th>
+                <th>
+                  Date fin
+                </th>
+                <th>
+                  Client
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for location in locations %}
+                <tr>
+                  <td>
+                    {{ location.id }}
+                  </td>
+                  <td>
+                    {{ location.dateDebut|date('m/d/Y') }}
+                  </td>
+                  <td>
+                    {{ location.dateFin|date('m/d/Y') }}
+                  </td>
+                  <td>
+                    {{ location.client.user.prenom }} {{ location.client.user.nom }}
+                  </td>
+                </tr>
+              {% else %}
+                <tr>
+                  <td colspan="100%">
+                    no records found
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

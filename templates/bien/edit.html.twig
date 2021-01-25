@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Bien{% endblock %}
+
+{% block content %}    
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Modifier
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('bien_index') }}">Biens</a></li>
+        <li class="active">Modifier</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Formulaire de modification du type de bien
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="m-b-30 pull-right">
+                <a href="{{ path('bien_index') }}"
+                  class="btn btn-primary waves-effect waves-light">
+                  Voir la liste
+                </a>
+              </div>
+            </div>
+        </div>
+        {{ include('bien/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </div>
+</div>
+
+{{ include('bien/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bien{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-sm-12">
+      <h4 class="pull-left page-title">
+        Détail
+      </h4>
+      <ol class="breadcrumb pull-right">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="{{ path('bien_index') }}">Bien</a></li>
+        <li class="active">Détail</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-border panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Détail du Proprietaire
+          </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6">
+                <div class="m-b-30 pull-right">
+                    <a href="{{ path('bien_index') }}"
+                    class="btn btn-primary waves-effect waves-light">
+                    Voir la liste
+                    </a>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ bien.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Libelle</th>
+                                <td>{{ bien.libelle }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adresse</th>
+                                <td>{{ bien.adresse }}</td>
+                            </tr>
+                            <tr>
+                                <th>Centre_fiscal</th>
+                                <td>{{ bien.centreFiscal }}</td>
+                            </tr>
+                            <tr>
+                                <th>Type du bien</th>
+                                <td><span class="label label-default">{{ bien.typeBien.libelle }}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Proprietaire</th>
+                                <td><span class="label label-info">{{ bien.proprietaire.user.prenom }} {{ bien.proprietaire.user.nom }}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Nombre d'articles</th>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a  href="{{ path('bien_article', {'id': bien.id}) }}">
+                                                {{ bien.articles|length }}
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a class="btn btn-sm btn-warning pull-right" href="{{ path('bien_new_article', {'id': bien.id}) }}"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="btn btn-primary btn-block waves-effect waves-light" href="{{ path('bien_edit', {'id': bien.id}) }}">Modifier</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('bien/_delete_form.html.twig') }}
+{% endblock %}
